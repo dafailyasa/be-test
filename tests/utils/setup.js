@@ -1,9 +1,12 @@
-const mongoose = require("mongoose");
 const config = require("../../src/config/config");
+const { MongoMemoryServer } = require('mongodb-memory-server');
+const mongoose = require("mongoose");
+
 
 const setupTestDB = () => {
   beforeAll(async () => {
-    await mongoose.connect(config.mongoose.url, config.mongoose.options);
+    const mongoServer = await MongoMemoryServer.create();
+    await mongoose.connect(mongoServer.getUri(), config.mongoose.options);
   });
 
   beforeEach(async () => {
