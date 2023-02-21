@@ -1,0 +1,46 @@
+{
+  "name": "nodejs-crud",
+  "version": "1.0.0",
+  "description": "create crud nodejs",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start:prod": "cross-env NODE_ENV=production nodemon src/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
+    "test:watch": "jest -i --watchAll",
+    "coverage": "jest -i --coverage",
+    "coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --check **/*.js",
+    "prettier:fix": "prettier --write **/*.js"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "http-status": "^1.6.2",
+    "joi": "^17.8.3",
+    "mongoose": "^6.9.2",
+    "mongoose-paginate-v2": "^1.7.1",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "coveralls": "^3.0.7",
+    "eslint": "^7.0.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^24.0.1",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-security": "^1.4.0",
+    "husky": "^7.0.0",
+    "jest": "^26.0.1",
+    "lint-staged": "^11.0.0",
+    "node-mocks-http": "^1.8.0",
+    "nodemon": "^2.0.0",
+    "prettier": "^2.0.5",
+    "supertest": "^6.0.1"
+  }
+}
