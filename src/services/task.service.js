@@ -1,6 +1,6 @@
 const http = require("http-status");
 const { Task } = require("../models");
-const ApiError = require("../utils/ApiError");
+const ApiError = require("../utils/apiError");
 
 const createTask = async (task) => {
   const result = await Task.create(task);
