@@ -31,6 +31,10 @@ Task Endpoint :
       > title(required)
       > description(optional)
       > status(optional with default status = false)
+      
+- DELETE localhost:3000/api/:id
+   params: 
+      > :id(id of task)
 ```
 
 # env
