@@ -1,7 +1,7 @@
 
 ## Description
 
-This Project Use Node.js and express. and for CI using github actions.
+This Project Use Node.js and express. and for CI using github actions. and use mongodb-memory-server for test.
 
 ```bash
 for route will be: localhost:3000/api
