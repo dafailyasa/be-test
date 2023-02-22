@@ -3,7 +3,38 @@
 
 This Project Use Node.js and express. and for CI using github actions.
 
+```bash
+for route will be: localhost:3000/api
+
+Task Endpoint : 
+ - GET localhost:3000/api/task/search
+    Query: 
+      > search
+      > sortBy("desc",asc") default createdAt
+      > limit
+      > page
+
+- POST localhost:3000/api/task
+   body: 
+      > title(required)
+      > description(optional)
+      > status(optional with defaut status = false)
+
+- GET localhost:3000/api/:id
+   params: 
+      > :id(id of task)
+
+- PATCH localhost:3000/api/:id
+   params: 
+      > :id(id of task)
+   body: 
+      > title(required)
+      > description(optional)
+      > status(optional with default status = false)
+```
+
 # env
+
 ```bash
 # node env = production,development,test
 NODE_ENV=development
