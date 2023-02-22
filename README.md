@@ -9,8 +9,8 @@ for route will be: localhost:3000/api
 Task Endpoint : 
  - GET localhost:3000/api/task/search
     Query: 
-      > search
-      > sortBy("desc",asc") default createdAt
+      > search(search by title)
+      > sortBy("desc","asc") on createdAt
       > limit
       > page
 
