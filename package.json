@@ -8,7 +8,7 @@
     "start:prod": "cross-env NODE_ENV=production nodemon src/index.js",
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
     "test:watch": "jest -i --watchAll",
-    "coverage": "jest -i --coverage --forceExit",
+    "coverage": " cross-env NODE_ENV=test jest -i --coverage --forceExit",
     "coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
