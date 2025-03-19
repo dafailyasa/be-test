@@ -9,26 +9,33 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x, 18.x] # Removed 14.x (EOL)
-    
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
+        node-version: [16.x, 18.x]  # Removed 14.x (EOL)
 
-    - run: yarn install
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: yarn install
 
   deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' # we tell Github to only execute this step if we're on our master branch (so we don't put unfinished branches in production)
+    needs: build  # Ensures build completes before deploying
+    if: github.ref == 'refs/heads/main'  # Deploy only when pushing to main
+
     steps:
       - name: Deploying to VPS
-        uses: appleboy/ssh-action@master # An action made to control Linux servers
-        with: # We set all our secrets here for the action, these won't be shown in the action logs
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.HOST_USERNAME }}
-          password: ${{ secrets.HOST_PASSWORD }}
+        uses: appleboy/ssh-action@master
+        with:
+          host: "103.183.75.97"
+          username: "dafa-workplace"
+          key: ${{ secrets.PRIVATE_SSH_KEY }}  # Use SSH Key instead of password
           port: 22
+          script: |
+            cd ~/apps/node1
+            git pull origin main
+            yarn install --production
+            pm2 restart node1
