@@ -35,6 +35,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            mkdir -p ~/app/be-test
             cd ~/app/be-test
+            git fetch origin
+            git pull origin main
 
