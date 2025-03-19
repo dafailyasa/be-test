@@ -36,4 +36,4 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             sudo su
-            mkdir /app/example-ci-cd-auto-deploy-vps-2
+            mkdir app/example-ci-cd-auto-deploy-vps-2
