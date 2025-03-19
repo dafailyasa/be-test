@@ -23,17 +23,12 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build
-    if: github.ref == 'refs/heads/main' # Only deploy on push to main
-    
+    if: github.ref == 'refs/heads/main' # we tell Github to only execute this step if we're on our master branch (so we don't put unfinished branches in production)
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Deploy using SSH
-      uses: garygrossgarten/github-action-scp@release
-      with:
-          local: test
-          remote: scp/directory
+      - name: Deploying to VPS
+        uses: appleboy/ssh-action@master # An action made to control Linux servers
+        with: # We set all our secrets here for the action, these won't be shown in the action logs
           host: ${{ secrets.HOST }}
           username: ${{ secrets.HOST_USERNAME }}
           password: ${{ secrets.HOST_PASSWORD }}
+          port: 22
