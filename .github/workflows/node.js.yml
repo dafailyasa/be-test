@@ -35,7 +35,5 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd ~/apps/node1
+            cd ~/apps
             git pull origin main
-            yarn install --production
-            pm2 restart node1
