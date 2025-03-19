@@ -35,5 +35,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
+            whoami
+            pwd
             mkdir -p ~/app/example-ci-cd-auto-deploy-vps
             cd ~/app/example-ci-cd-auto-deploy-vps
