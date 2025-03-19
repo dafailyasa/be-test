@@ -35,5 +35,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /apps
+            cd ~/app/example-ci-cd-auto-deploy-vps
             git pull origin main
+            git status
+
