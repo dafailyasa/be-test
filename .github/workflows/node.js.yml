@@ -32,7 +32,7 @@ jobs:
         with:
           host: "103.183.75.97"
           username: "dafa-workplace"
-          key: ${{ secrets.PRIVATE_SSH_KEY }}  # Use SSH Key instead of password
+          password: "!Qazsewq123"
           port: 22
           script: |
             cd ~/apps/node1
