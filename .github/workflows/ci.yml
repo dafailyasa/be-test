@@ -15,13 +15,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
       - run: yarn install
+      - name: Install OpenSSL 1.1 (Required for MongoDB Memory Server)
+        run: sudo apt-get update && sudo apt-get install -y libssl1.1 || sudo apt-get install -y libssl3
+
 
   test:
     runs-on: ubuntu-latest
@@ -32,14 +33,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
       - run: yarn install
-      
+      - name: Install OpenSSL 1.1 (Required for MongoDB Memory Server)
+        run: sudo apt-get update && sudo apt-get install -y libssl1.1 || sudo apt-get install -y libssl3
       - name: Run Tests
         run: yarn run coverage
 
