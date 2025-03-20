@@ -38,5 +38,5 @@ jobs:
             cd ~/app/be-test
             git fetch origin
             git pull origin main
-            docker-compose up --build -d
+            docker compose up --build -d
 
