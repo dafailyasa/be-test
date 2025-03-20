@@ -20,8 +20,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn install
-      - name: Install OpenSSL 1.1 (Required for MongoDB Memory Server)
-        run: sudo apt-get update && sudo apt-get install -y libssl1.1 || sudo apt-get install -y libssl3
 
 
   test:
@@ -38,8 +36,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn install
-      - name: Install OpenSSL 1.1 (Required for MongoDB Memory Server)
-        run: sudo apt-get update && sudo apt-get install -y libssl1.1 || sudo apt-get install -y libssl3
       - name: Run Tests
         run: yarn run coverage
 
