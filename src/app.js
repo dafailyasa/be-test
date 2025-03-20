@@ -10,6 +10,14 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+  res.status(200).send("Welcome to the be-test API!");
+});
+
+app.get("/ping", (req, res) => {
+  res.status(200).send("pong");
+});
+
 // /api api routes
 app.use("/api", routes);
 
